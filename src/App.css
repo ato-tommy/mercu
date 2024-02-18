@@ -1,0 +1,54 @@
+*{
+    padding: 0 ;
+    margin: 0 ;
+}
+.cp{
+    cursor: pointer;
+}
+.t07{
+    transition: all .7s;
+}
+
+.navbar-menu{
+animation: navbar 1s;
+}
+.HomeServicesContainer{
+    background: url(./../public/banner6.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.servicesItemsContainer{
+    background-color: #33333392;
+}
+.homeCategrieBoxTextsContainer{
+    background-color: #222222a4;
+}
+.homeCategrieBox:hover > .homeCategrieBoxTextsContainer{
+    top: 0 !important;
+    align-items: center;
+}
+
+.productBoxText{
+    background-color: #414041c2;
+}
+
+.homeCategories{
+    /* background-image: linear-gradient(to bottom , rgb(30, 41, 59)50%,white ); */
+    background-image: linear-gradient(to bottom , rgb(15,23,42)50%,rgb(163, 161, 161) );
+}
+
+.newsBox{
+    background-color: #dedddd28;
+}
+.pageBgLayout{
+    background-color: #08012358;
+}
+@keyframes navbar{
+    0%{
+        transform: translateY(-50vh);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
