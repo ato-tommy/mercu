@@ -3,7 +3,7 @@ import PageBgLayout from '../../components/modules/PageBgLayout/PageBgLayout'
 import MobileCategory from '../../components/Template/Products/MobileCategory/MobileCategory'
 import DesktopCategory from '../../components/Template/Products/DesktopCategory/DesktopCategory'
 import { useSelector } from 'react-redux'
-import Map from '../../components/modules/Map/Map'
+
 
 
 function Products() {
@@ -21,7 +21,7 @@ function Products() {
 
   return (
     <>
-      <PageBgLayout title={'Products'} height={50} img={'./banner1.jpg'} />
+      <PageBgLayout title={'Products'} height={'h-[50vh]'} img={'./banner1.jpg'} />
       <div className='bg-slate-800 py-10'>
         <MobileCategory />
         <DesktopCategory />
@@ -39,11 +39,7 @@ function Products() {
 
         </div>
       </div>
-      <div className='w-1/2 h-[10vh]'>
-
-      <Map/>
       
-      </div>
      
     </>
   )

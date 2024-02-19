@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Map from "../Map/Map";
 
 function Footer() {
   return (
@@ -79,8 +80,9 @@ function Footer() {
           Address : Gholhak
         </li>
       </ul>
-      <div className="py-16">
-         <img src="./testMap.png" className="rounded-xl" alt="" />
+      <div className="py-16  ">
+         {/* <img src="./testMap.png" className="rounded-xl" alt="" /> */}
+         <Map/>
       </div>
     </div>
   );
