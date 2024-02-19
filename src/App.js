@@ -5,6 +5,8 @@ import { useRoutes } from 'react-router-dom';
 import router from './router/router';
 import 'aos/dist/aos.css';
 import Footer from './components/modules/Footer/Footer';
+import { Suspense } from 'react';
+import PageLoader from './components/modules/PageLoader/PageLoader';
 
 function App() {
   const routes = useRoutes(router)
@@ -12,8 +14,10 @@ function App() {
 
   <>
   <section className='relative'>
-  <Navbar />
+  <Navbar  />
+  <Suspense fallback={<PageLoader/>}>
   {routes}
+  </Suspense>
   <Footer/>
   </section>
  
