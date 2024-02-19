@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import { divIcon } from 'leaflet';  
 import { renderToString } from 'react-dom/server';
 import LocationIcon from '../LocationIcon/LocationIcon';
-function Map() {
+function Map({height}) {
        const position = [25.18461830530422, 55.26289101001564]
 
       const customIcon = divIcon({
@@ -14,8 +14,8 @@ function Map() {
 
   return (
        <>
-       <div className='w-full h-[30vh] 
-        overflow-hidden rounded-lg'>
+       <div className={`w-full ${height} 
+        overflow-hidden rounded-lg relative`}>
 
        <MapContainer center={position} zoom={15} scrollWheelZoom={true} style={{height:'100%',width:'100%'}} >
        <TileLayer
@@ -24,13 +24,14 @@ function Map() {
        />
        <Marker position={position} icon={customIcon} >
        <Popup>
-         <a href="geo:25.18461830530422, 55.26289101001564">
+         <a href="geo:35.784705,51.444192">
           Direction
          </a>
         </Popup>
        </Marker>
      </MapContainer>
 
+<a href="geo:35.784705,51.444192" className='absolute right-0 bottom-0 z-[1000] bg-blue-500 text-white px-4 py-1 rounded-lg'>Diraction ...</a>
        </div>
        </>
         

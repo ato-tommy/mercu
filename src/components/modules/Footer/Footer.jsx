@@ -82,7 +82,7 @@ function Footer() {
       </ul>
       <div className="py-16  ">
          {/* <img src="./testMap.png" className="rounded-xl" alt="" /> */}
-         <Map/>
+         <Map height='h-[30vh]' />
       </div>
     </div>
   );

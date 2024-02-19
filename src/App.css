@@ -44,6 +44,7 @@ animation: navbar 1s;
 .pageBgLayout{
     background-color: #08012358;
 }
+
 @keyframes navbar{
     0%{
         transform: translateY(-50vh);

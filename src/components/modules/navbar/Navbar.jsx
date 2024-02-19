@@ -97,6 +97,7 @@ function Navbar() {
                 onClick={() => {
                   setShowMenu(false);
                   setShowBars(true);
+                  window.scrollTo(0,0)
                 }}
               >
                 {item.title}
@@ -140,12 +141,13 @@ function Navbar() {
               key={item.id}
               className={(itemm) =>
                 itemm.isActive
-                  ? "text-lg block text-green-500 bg-slate-600 text-center text-xl border border-b border-gray-400 py-3 cp"
+                  ? "text-lg block text-amber-700 bg-slate-600 text-center text-xl border border-b border-gray-400 py-3 cp"
                   : "text-lg block text-white bg-slate-600 text-center text-xl border border-b border-gray-400 py-3 cp"
               }
               onClick={() => {
                 setShowMenu(false);
                 setShowBars(true);
+                window.scrollTo(0,0)
               }}
             >
               {item.title}
