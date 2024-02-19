@@ -16,7 +16,7 @@ function HomeProducts() {
   return (
     <div className="w-full bg-slate-800 py-12 homeCategories">
       <SectionsTitle title={"Categories"} />
-      <div className="grid  grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:px-36 my-7 mx-auto py-16">
+      <div className="grid gap-8  grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:px-36 my-7 mx-auto py-16">
          {
             categories.map((category,index)=>(
                <Link className="w-60 h-60 bg-white overflow-hidden relative homeCategrieBox rounded-lg mx-auto mt-5 xl:mt-0" data-aos={category.aos} to={'products'}>

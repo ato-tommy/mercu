@@ -6,9 +6,9 @@ function Footer() {
   return (
     <div
       style={{ background: "#333" }}
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-16"
+      className="grid grid-cols-1 lg:grid-cols-3 lg:px-16"
     >
-      <ul className="text-white flex justify-center gap-9 ps-16 flex-col">
+      <ul className="text-white w-full  py-6 lg:py-0 border-b border-blue-50 lg:border-0 flex justify-center gap-5 my-7 lg:gap-9 lg:ps-16 flex-col mx-auto px-5 lg:px-0">
         <li>
           <Link>Products</Link>
         </li>
@@ -22,7 +22,7 @@ function Footer() {
           <Link>Contact Us</Link>
         </li>
       </ul>
-      <ul className=" flex gap-9 justify-center flex-col text-white">
+      <ul className=" flex px-5 lg:px-0  w-full gap-5  py-6 lg:py-0 border-b border-blue-50 lg:border-0 lg:gap-9 justify-center flex-col text-white mx-auto">
         <li className="flex justify-start items-center gap-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -80,9 +80,8 @@ function Footer() {
           Address : Gholhak
         </li>
       </ul>
-      <div className="py-16  ">
-         {/* <img src="./testMap.png" className="rounded-xl" alt="" /> */}
-         <Map height='h-[30vh]' />
+      <div className="py-16  px-5 lg:px-0">
+         <Map height={'h-[30vh]'}/>
       </div>
     </div>
   );

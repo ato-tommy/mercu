@@ -25,7 +25,7 @@ function Products() {
       <div className='bg-slate-800 py-10'>
         <MobileCategory />
         <DesktopCategory />
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
+        <div className='grid px-16 grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4'>
           {
             products.map((product, index) => (
               <div key={index} className='w-60 h-64 my-10 pb-4 overflow-hidden mx-auto rounded-lg  relative'>
