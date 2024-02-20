@@ -5,10 +5,14 @@ import { useRoutes } from 'react-router-dom';
 import router from './router/router';
 import 'aos/dist/aos.css';
 import Footer from './components/modules/Footer/Footer';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import PageLoader from './components/modules/PageLoader/PageLoader';
+import AOS from 'aos';
 
 function App() {
+  useEffect(() => {
+    AOS.init();
+  }, [])
   const routes = useRoutes(router)
   return (
 

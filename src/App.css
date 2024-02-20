@@ -51,6 +51,21 @@ animation: navbar 1s;
     background-attachment: fixed;
     background-size: cover;
 }
+.loader{
+    animation: loader 3s infinite;
+}
+
+@keyframes loader{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.03);
+    }
+    100%{
+        transform: translateY(1);
+    } 
+}
 
 @keyframes navbar{
     0%{
