@@ -1,6 +1,5 @@
 import React from "react";
 import PageBgLayout from "../../components/modules/PageBgLayout/PageBgLayout";
-import SectionsTitle from "../../components/modules/SectionsTitle/SectionsTitle";
 import CounterItems from "../../components/Template/aboutUs/CounterItems/CounterItems";
 
 function AboutUs() {

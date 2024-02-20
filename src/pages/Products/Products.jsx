@@ -2,11 +2,49 @@ import React, { useEffect, useRef, useState } from "react";
 import PageBgLayout from "../../components/modules/PageBgLayout/PageBgLayout";
 
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 function Products() {
   const data = useSelector((state) => state);
+  const [info,setInfo] = useState()
   const [showModal, setIsShowModal] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState("All");
+
+  useEffect(()=>{
+    
+   fetchData()
+    
+  },[])
+  useEffect(()=>{
+    
+    // console.log(info)
+    
+  },[info])
+
+
+  async function fetchData(){
+    await axios.get('http://192.168.50.127/Category/GetAll')
+    .then(data=>setInfo(data.data))
+  }
+
+  // async function fetchData() {
+  //   const apiUrl = 'http://192.168.50.127/Category/GetAll';
+  
+  //   try {
+  //     const response = await axios.get(apiUrl);
+  //     console.log('Fetched data:', response.data);
+  //   } catch (error) {
+  //     if (error.response) {
+
+  //       console.error('Server responded with non-2xx status:', error.response.status);
+  //       console.error('Response data:', error.response.data);
+  //     } else if (error.request) {
+  //       console.error('No response received from the server');
+  //     } else {
+  //       console.error('Error during request setup:', error.message);
+  //     }
+  //   }
+  // }
 
   const products = [
     { img: "./banner7.jpg", title: "test title" },
@@ -15,12 +53,12 @@ function Products() {
     { img: "./banner5.jpg", title: "test title" },
     { img: "./banner4.jpg", title: "test title" },
   ];
-  const categories = [
-    { id: 1, name: "All" },
-    { id: 2, name: "Oil And Gas" },
-    { id: 3, name: "Petrochemical" },
-    { id: 4, name: "Non Fuel Products" },
-  ];
+  // const categories = [
+  //   { id: 11, name: "All" },
+  //   { id: 22, name: "Oil And Gas" },
+  //   { id: 33, name: "Petrochemical" },
+  //   { id: 44, name: "Non Fuel Products" },
+  // ];
 
   const closeModalHandler = (e) => {
     e.target.dataset.name && setIsShowModal(false);
@@ -39,20 +77,22 @@ function Products() {
       <div className="bg-slate-800 py-10 h-auto grid grid-cols-1 lg:grid-cols-4">
         <div className="w-3/4 md:w-5/6 mx-auto lg:col-span-1 bg-[#d3d4d834] mt-10  rounded-lg pt-5 h-[30vh]">
           <form>
-            {categories.map((category) => (
-              <>
-                <label key={category.id} className="flex gap-2 px-5 text-white text-lg font-semibold">
+            {info && info.map((category,index) => (
+              
+              <div key={index}>
+                <label  className="flex gap-2 px-5 text-white text-lg font-semibold" >
                   <input
                     type="checkbox"
-                    name={category.name}
-                    checked={selectedOption === category.name}
-                    onChange={() => handleCheckboxChange(category.name)}
+                    name={category.title}
+                    checked={selectedOption === category.title}
+                    onChange={() => handleCheckboxChange(category.title)}
                     
                   />
-                  {category.name}
+                  {category.title}
                 </label>
                 <br />
-              </>
+                </div>
+              
             ))}
           </form>
         </div>
@@ -87,13 +127,13 @@ function Products() {
           onClick={closeModalHandler}
           data-name="modalContainer"
         >
-          <div className=" w-4/5 h-3/5 bg-slate-100  rounded-lg grid grid-cols-1 lg:grid-cols-2 overflow-hidden relative">
+          <div className=" w-4/5 h-3/5 bg-slate-800  rounded-lg grid grid-cols-1 lg:grid-cols-2 overflow-hidden relative">
             <div className="modalImgContainer">
               <img src="./banner1.jpg" className="w-full lg:h-full" alt="" />
             </div>
             <div className="modalTextContainer overflow-y-scroll">
-              <h1 className="text-4xl ms-5 mt-5 font-semibold">sajjad</h1>
-              <p className="px-4 my-5 text-gray-500 text-justify">
+              <h1 className="text-4xl ms-5 mt-5 font-semibold text-gray-100">sajjad</h1>
+              <p className="px-4 my-5 text-gray-100 text-justify">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
                 provident vel laborum accusantium facilis nam cupiditate iusto
                 id itaque cum, sequi perferendis deleniti temporibus
