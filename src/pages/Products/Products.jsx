@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import PageBgLayout from "../../components/modules/PageBgLayout/PageBgLayout";
-import MobileCategory from "../../components/Template/Products/MobileCategory/MobileCategory";
-import DesktopCategory from "../../components/Template/Products/DesktopCategory/DesktopCategory";
+
 import { useSelector } from "react-redux";
 
 function Products() {
   const data = useSelector((state) => state);
   const [showModal, setIsShowModal] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const products = [
     { img: "./banner7.jpg", title: "test title" },
@@ -15,16 +15,20 @@ function Products() {
     { img: "./banner5.jpg", title: "test title" },
     { img: "./banner4.jpg", title: "test title" },
   ];
+  const categories = [
+    { id: 1, name: "All" },
+    { id: 2, name: "Oil And Gas" },
+    { id: 3, name: "Petrochemical" },
+    { id: 4, name: "Non Fuel Products" },
+  ];
 
+  const closeModalHandler = (e) => {
+    e.target.dataset.name && setIsShowModal(false);
+  };
 
-  const closeModalHandler =(e)=>{
-    e.target.dataset.name && setIsShowModal(false)
-  }
-
-
-
-
-
+  const handleCheckboxChange = (option) => {
+    setSelectedOption(option);
+  };
   return (
     <>
       <PageBgLayout
@@ -32,14 +36,32 @@ function Products() {
         height={"h-[50vh]"}
         img={"./banner1.jpg"}
       />
-      <div className="bg-slate-800 py-10">
-        <MobileCategory />
-        <DesktopCategory />
-        <div className="grid px-16 grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4">
-          {products.map((product, index) => (
+      <div className="bg-slate-800 py-10 h-auto grid grid-cols-1 lg:grid-cols-4">
+        <div className="w-3/4 md:w-5/6 mx-auto lg:col-span-1 bg-[#d3d4d834] mt-10  rounded-lg pt-5 h-[30vh]">
+          <form>
+            {categories.map((category) => (
+              <>
+                <label key={category.id} className="flex gap-2 px-5 text-white text-lg font-semibold">
+                  <input
+                    type="checkbox"
+                    name={category.name}
+                    checked={selectedOption === category.name}
+                    onChange={() => handleCheckboxChange(category.name)}
+                    
+                  />
+                  {category.name}
+                </label>
+                <br />
+              </>
+            ))}
+          </form>
+        </div>
+        <div className="lg:col-span-3  lg:h-[90vh] lg:overflow-y-scroll">
+          <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 px-4">
+        {products.map((product, index) => (
             <div
               key={index}
-              className="w-60 h-64 my-10 pb-4 overflow-hidden mx-auto rounded-lg  relative"
+              className="w-60 h-64 lg:w-56 md:w-72  lg:h-56  my-10 pb-4 overflow-hidden mx-auto rounded-lg  relative"
               onClick={() => {
                 setIsShowModal(true);
               }}
@@ -54,11 +76,17 @@ function Products() {
               </div>
             </div>
           ))}
+          </div>
         </div>
       </div>
+ 
 
       {showModal && (
-        <div className="Modal fixed h-[100vh] w-full left-0 top-0 bg-[#302f2fd3] flex justify-center items-center z-[51]" onClick={closeModalHandler} data-name="modalContainer">
+        <div
+          className="Modal fixed h-[100vh] w-full left-0 top-0 bg-[#302f2fd3] flex justify-center items-center z-[51]"
+          onClick={closeModalHandler}
+          data-name="modalContainer"
+        >
           <div className=" w-4/5 h-3/5 bg-slate-100  rounded-lg grid grid-cols-1 lg:grid-cols-2 overflow-hidden relative">
             <div className="modalImgContainer">
               <img src="./banner1.jpg" className="w-full lg:h-full" alt="" />
@@ -78,8 +106,7 @@ function Products() {
                 eius magni voluptatibus ducimus ex non iste molestias dicta
                 quis, aliquid eligendi esse libero repellendus incidunt! Natus
                 quia placeat eaque soluta et quisquam distinctio animi
-                explicabo!
-                lorem500
+                explicabo! lorem500
               </p>
             </div>
 

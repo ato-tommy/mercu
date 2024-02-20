@@ -45,6 +45,13 @@ animation: navbar 1s;
     background-color: #08012358;
 }
 
+.abotUsProps{
+    background: url(./../public/aboutus/prop.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 @keyframes navbar{
     0%{
         transform: translateY(-50vh);
@@ -53,3 +60,23 @@ animation: navbar 1s;
         transform: translateY(0);
     }
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #615f5f;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #023555da;
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1b62b8;
+  }
