@@ -7,9 +7,9 @@ import Typewriter from "typewriter-effect";
 function HomeBanner() {
    const banners = [
       // {img:'./test.jpg',title:'Lorem, ipsum dolor.',subTitle:' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepesunt dicta sed ullam mollitia similique!'},
-      {img:'./nwBn1.jpg',title:'Lorem, ipsum dolor.',subTitle:' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepesunt dicta sed ullam mollitia similique!'},
-      {img:'./nwBn2.jpg',title:'Lorem, ipsum dolor.',subTitle:' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepesunt dicta sed ullam mollitia similique!'},
-      {img:'./newBn3.jpg',title:'Lorem, ipsum dolor.',subTitle:' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepesunt dicta sed ullam mollitia similique!'},
+      {img:'./bannerDesktop1.jpg',title:'Lorem, ipsum dolor.',subTitle:' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepesunt dicta sed ullam mollitia similique!'},
+      {img:'./bannerDesktop2.jpg',title:'Lorem, ipsum dolor.',subTitle:' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepesunt dicta sed ullam mollitia similique!'},
+      {img:'./bannerDesktop3.jpg',title:'Lorem, ipsum dolor.',subTitle:' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepesunt dicta sed ullam mollitia similique!'},
     ]
   return (
     <>
