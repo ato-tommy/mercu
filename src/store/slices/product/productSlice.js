@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getProductsData } from './productsExtraReducers'
+import { getProductById, getProductsData } from './productsExtraReducers'
 
 
 
@@ -7,9 +7,19 @@ const productsSlice = createSlice({
   name: 'products',
   initialState:{
    productsDataLoading:false,
-   productsData:[]
+   productsData:[],
+   productDataLoading:false,
+   productData:[]
+
   },
-  reducers: {},
+  reducers: {
+    showModal: (state) => {
+      state.productDataLoading = false
+    },
+    hideModal: (state) => {
+      state.productDataLoading = true
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getProductsData.pending, (state) => {
@@ -26,7 +36,21 @@ const productsSlice = createSlice({
       .addCase(getProductsData.rejected, (state) => {
         state.productsDataLoading = false
       })
+      .addCase(getProductById.pending, (state) => {
+
+        state.productDataLoading = true
+      })
+      .addCase(
+         getProductById.fulfilled,(state, {payload}) => {
+        console.log(payload)
+          state.productDataLoading = false
+          state.productData = payload
+        },
+      )
+      .addCase(getProductById.rejected, (state) => {
+        state.productDataLoading = false
+      })
   },
 })
-
-export default productsSlice.reducer
+export const { hideModal } = productsSlice.actions;
+export default productsSlice.reducer  
