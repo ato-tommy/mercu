@@ -10,6 +10,8 @@ function AboutUs() {
         img={"./aboutus/aboutUs3.jpg"}
         title={"About Us"}
       />
+     
+
       <div className="w-full bg-slate-800 pt-10">
         <div className="w-3/4 py-5 px-3 mx-auto mb-10 text-white bg-[#83c3de25] rounded-lg">
           <h1 className="text-3xl mb-5">Strong Infrastructure</h1>
@@ -79,11 +81,18 @@ function AboutUs() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 my-10">
-            <CounterItems title={'Years of work experience'} count={100} percent={false} />
-            <CounterItems title={'Customer Satisfaction'} count={94} percent={true} />
-            <CounterItems title={'Project done'} count={28} percent={false} />
-            <CounterItems title={'Staff Members'} count={120} percent={false} />
-            
+            <CounterItems
+              title={"Years of work experience"}
+              count={100}
+              percent={false}
+            />
+            <CounterItems
+              title={"Customer Satisfaction"}
+              count={94}
+              percent={true}
+            />
+            <CounterItems title={"Project done"} count={28} percent={false} />
+            <CounterItems title={"Staff Members"} count={120} percent={false} />
           </div>
         </div>
       </div>

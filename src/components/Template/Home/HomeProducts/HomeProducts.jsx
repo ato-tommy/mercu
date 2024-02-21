@@ -19,7 +19,7 @@ function HomeProducts() {
       <div className="grid gap-8  grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:px-36 my-7 mx-auto py-16">
          {
             categories.map((category,index)=>(
-               <Link className="w-60 h-60 bg-white overflow-hidden relative homeCategrieBox rounded-lg mx-auto mt-5 xl:mt-0" data-aos={category.aos} to={'products'}>
+               <Link key={index} className="w-60 h-60 bg-white overflow-hidden relative homeCategrieBox rounded-lg mx-auto mt-5 xl:mt-0" data-aos={category.aos} to={'products'}>
                <img src={category.img} className="w-full h-full" alt="" />
                <div className="absolute top-[70%] w-full h-full flex  justify-center items-start homeCategrieBoxTextsContainer t07" >
                  <h2 className="text-white text-2xl mb-5 px-3">

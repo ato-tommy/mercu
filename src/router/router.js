@@ -16,7 +16,7 @@ const router = [
    {path:'/',element:<Home/>},
    {path:'/products',element:<Products/>},
    {path:'/services',element:<Services/> },
-   {path:'/aboutus',element:<AboutUs/> },
-   {path:'/contactus',element:<ContactUS/> },
+   {path:'/about-us',element:<AboutUs/> },
+   {path:'/contact-us',element:<ContactUS/> },
 ]
 export default router

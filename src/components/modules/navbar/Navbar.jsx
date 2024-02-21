@@ -7,8 +7,8 @@ function Navbar() {
     { id: 2, title: "Products", path: "/products" },
     // { id: 3, title: "Projects", path: "/projects" },
     { id: 4, title: "Services", path: "/services" },
-    { id: 5, title: "About Us", path: "/aboutus" },
-    { id: 6, title: "Contact Us", path: "/contactus" },
+    { id: 5, title: "About Us", path: "/about-us" },
+    { id: 6, title: "Contact Us", path: "/contact-us" },
   ];
 
   const [showMenu, setShowMenu] = useState(false);

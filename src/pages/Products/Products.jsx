@@ -1,50 +1,26 @@
 import React, { useEffect, useRef, useState } from "react";
 import PageBgLayout from "../../components/modules/PageBgLayout/PageBgLayout";
-
-import { useSelector } from "react-redux";
-import axios from "axios";
+import Skeleton from './../../components/modules/Skeleton/Skeleton'
+import { useDispatch, useSelector } from "react-redux";
+import { getCategoriesData } from "../../store/slices/Category/categoryExtraReducer";
+import { getProductsData } from "../../store/slices/product/productsExtraReducers";
 
 function Products() {
-  const data = useSelector((state) => state);
-  const [info,setInfo] = useState()
+  const {categoriesData,categoriesDataLoading} = useSelector((state) => state.category);
+  const {productsData,productsDataLoading} = useSelector((state) => state.products);
   const [showModal, setIsShowModal] = useState(false);
   const [selectedOption, setSelectedOption] = useState("All");
-
+const data = useSelector(data=>data)
+  const dispatch = useDispatch()
+   
   useEffect(()=>{
-    
-   fetchData()
-    
-  },[])
-  useEffect(()=>{
-    
-    // console.log(info)
-    
-  },[info])
+    dispatch(getCategoriesData())
+    const data = {
+      category: selectedOption
+    }
+    dispatch(getProductsData(data))
+  },[selectedOption])
 
-
-  async function fetchData(){
-    await axios.get('http://192.168.50.127/Category/GetAll')
-    .then(data=>setInfo(data.data))
-  }
-
-  // async function fetchData() {
-  //   const apiUrl = 'http://192.168.50.127/Category/GetAll';
-  
-  //   try {
-  //     const response = await axios.get(apiUrl);
-  //     console.log('Fetched data:', response.data);
-  //   } catch (error) {
-  //     if (error.response) {
-
-  //       console.error('Server responded with non-2xx status:', error.response.status);
-  //       console.error('Response data:', error.response.data);
-  //     } else if (error.request) {
-  //       console.error('No response received from the server');
-  //     } else {
-  //       console.error('Error during request setup:', error.message);
-  //     }
-  //   }
-  // }
 
   const products = [
     { img: "./banner7.jpg", title: "test title" },
@@ -75,30 +51,37 @@ function Products() {
         img={"./banner1.jpg"}
       />
       <div className="bg-slate-800 py-10 h-auto grid grid-cols-1 lg:grid-cols-4">
-        <div className="w-3/4 md:w-5/6 mx-auto lg:col-span-1 bg-[#d3d4d834] mt-10  rounded-lg pt-5 h-[30vh]">
-          <form>
-            {info && info.map((category,index) => (
-              
-              <div key={index}>
-                <label  className="flex gap-2 px-5 text-white text-lg font-semibold" >
-                  <input
-                    type="checkbox"
-                    name={category.title}
-                    checked={selectedOption === category.title}
-                    onChange={() => handleCheckboxChange(category.title)}
-                    
-                  />
-                  {category.title}
-                </label>
-                <br />
-                </div>
-              
-            ))}
-          </form>
-        </div>
+        {
+          !categoriesDataLoading ? (
+            <div className="w-3/4 md:w-5/6 mx-auto lg:col-span-1 bg-[#d3d4d834] mt-10  rounded-lg pt-5 h-[30vh]">
+            <form>
+              { categoriesData.map((category,index) => (
+                
+                <div key={index}>
+                  <label  className="flex gap-2 px-5 text-white text-lg font-semibold capitalize" >
+                    <input
+                      type="checkbox"
+                      name={category.title}
+                      checked={selectedOption === category.title}
+                      onChange={() => handleCheckboxChange(category.title)}
+                      
+                    />
+                    {category.title}
+                  </label>
+                  <br />
+                  </div>
+                
+              ))  }
+            </form>
+          </div>
+          ): <Skeleton count={1} />
+        }
+      
         <div className="lg:col-span-3  lg:h-[90vh] lg:overflow-y-scroll">
-          <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 px-4">
-        {products.map((product, index) => (
+          {
+            !productsDataLoading ? (
+<div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 px-4">
+        { productsData.map((product, index) => (
             <div
               key={index}
               className="w-60 h-64 lg:w-56 md:w-72  lg:h-56  my-10 pb-4 overflow-hidden mx-auto rounded-lg  relative"
@@ -107,7 +90,8 @@ function Products() {
               }}
             >
               <img
-                src={product.img}
+                // src={product.img}
+                src={`data:image/jpg;base64,${product.imageBase64}`}
                 className="w-full h-full absolute top-0 left-0"
                 alt=""
               />
@@ -115,8 +99,11 @@ function Products() {
                 {product.title}
               </div>
             </div>
-          ))}
+          )) }
           </div>
+            ):(<Skeleton count={3} />)
+          }
+          
         </div>
       </div>
  

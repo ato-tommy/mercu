@@ -1,29 +1,32 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { initialState } from './productInitialState'
+import { getProductsData } from './productsExtraReducers'
 
-import productsReducers from './productReducers'
+
 
 const productsSlice = createSlice({
-  name: 'companies',
-  initialState,
-  reducers: productsReducers,
+  name: 'products',
+  initialState:{
+   productsDataLoading:false,
+   productsData:[]
+  },
+  reducers: {},
   extraReducers: (builder) => {
-    // builder
-    //   .addCase(getCompaniesData.pending, (state) => {
-    //     state.products.productsDataLoading = true
-    //   })
-    //   .addCase(
-    //     getCompaniesData.fulfilled,
-    //     (state, { payload }) => {
-    //       state.products.productsDataLoading = false
-    //       state.products.productsData = payload
-    //     },
-    //   )
-    //   .addCase(getCompaniesData.rejected, (state) => {
-    //     state.products.productsDataLoading = false
-    //   })
+    builder
+      .addCase(getProductsData.pending, (state) => {
+
+        state.productsDataLoading = true
+      })
+      .addCase(
+         getProductsData.fulfilled,(state, {payload}) => {
+        
+          state.productsDataLoading = false
+          state.productsData = payload
+        },
+      )
+      .addCase(getProductsData.rejected, (state) => {
+        state.productsDataLoading = false
+      })
   },
 })
-
 
 export default productsSlice.reducer
