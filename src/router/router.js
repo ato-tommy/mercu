@@ -1,4 +1,5 @@
 import { lazy } from "react";
+import Upload from "../pages/Upload/Upload";
 // import AboutUs from "../pages/AboutUs/AboutUs";
 // import ContactUS from "../pages/ContactUs/ContactUS";
 // // import Home from "../pages/Home/Home";
@@ -18,5 +19,6 @@ const router = [
    {path:'/services',element:<Services/> },
    {path:'/about-us',element:<AboutUs/> },
    {path:'/contact-us',element:<ContactUS/> },
+   {path:'/Upload',element:<Upload/> },
 ]
 export default router
