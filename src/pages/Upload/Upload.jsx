@@ -23,7 +23,7 @@ function Upload() {
   function submitHandler() {
     const newProduct = {
       title,
-      categoryId: 6,
+      categoryId: 5,
       code: "string",
       imageBase64: base64String,
       description: desc,

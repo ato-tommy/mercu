@@ -31,6 +31,7 @@ function Products() {
       category: selectedOption,
     };
     dispatch(getProductsData(data));
+    dispatch(hideModal())
   }, [selectedOption]);
 
   const closeModalHandler = (e) => {
@@ -110,15 +111,15 @@ function Products() {
 
       {!productDataLoading && (
         <div
-          className="Modal fixed h-[100vh] w-full left-0 top-0 bg-[#302f2fd3] flex justify-center items-center z-[51]"
+          className="Modal fixed h-[100vh] w-full left-0 top-0 bg-[#302f2fd3] flex justify-center items-center z-[9999]"
           onClick={closeModalHandler}
           data-name="modalContainer"
         >
-          <div className=" w-4/5 h-3/5 bg-slate-800  rounded-lg grid grid-cols-1 lg:grid-cols-2 overflow-hidden relative">
-            <div className="modalImgContainer">
+          <div className=" w-4/5  lg:h-4/5 bg-slate-800  rounded-lg grid grid-cols-1 lg:grid-cols-2 overflow-hidden relative">
+            <div className="modalImgContainer h-[400px] lg:h-full overflow-hidden">
               <img
                 src={`data:image/jpg;base64,${productData.imageBase64}`}
-                className="w-full lg:h-full"
+                className="w-full h-full lg:h-full"
                 alt=""
               />
             </div>
@@ -132,7 +133,7 @@ function Products() {
             </div>
 
             <div
-              className="closeModal absolute top-2 right-2"
+              className="closeModal absolute top-2 lg:right-4 right-2 bg-[#80808061] rounded-lg"
               onClick={() => {
                 dispatch(hideModal());
               }}
@@ -143,7 +144,7 @@ function Products() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-8 h-8 text-white lg:text-gray-700 lg:w-10 lg:h-10"
+                className="w-8 h-8 text-white  lg:w-10 lg:h-10"
               >
                 <path
                   strokeLinecap="round"

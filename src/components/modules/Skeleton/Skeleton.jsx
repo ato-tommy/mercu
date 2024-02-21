@@ -8,11 +8,11 @@ function Skeleton({ count }) {
         {newArray.map((item, index) => (
           <div
             key={index}
-            className="w-[300px] animate-pulse bg-gray-300 p-4 rounded-md shadow-md"
+            className="w-[300px] mx-auto animate-pulse bg-gray-300 p-4 rounded-md shadow-md"
           >
-            <div className="h-6 bg-gray-400 mb-4"></div>
-            <div className="h-4 bg-gray-400 mb-2"></div>
-            <div className="h-4 bg-gray-400"></div>
+            <div className="h-6 bg-gray-400 mb-4 mx-auto"></div>
+            <div className="h-4 bg-gray-400 mb-2 mx-auto"></div>
+            <div className="h-4 bg-gray-400 mx-auto mt-5 lg:mt-0"></div>
           </div>
         ))}
       </div>
